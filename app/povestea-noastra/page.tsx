@@ -1,10 +1,22 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import useFadeIn from "@/hooks/useFadeIn";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export default function PovesteaNoastraPage() {
+  const { ref, isVisible } = useFadeIn({});
+
   return (
-    <div className="container mt-30 mb-10 lg:mb-20 mx-auto px-4 space-y-16 lg:space-y-20">
-      <div className="space-y-10">
+    <div className="container max-w-4xl 3xl:max-w-none mx-auto px-4 mt-30 mb-10 lg:mb-20 space-y-16 lg:space-y-20">
+      <div
+        ref={ref}
+        className={cn(
+          "space-y-10 transition-opacity duration-1000 ease-in-out",
+          isVisible ? "opacity-100" : "opacity-0",
+        )}
+      >
         <img
           src={"/couple.png"}
           className="rotate-2 rounded-md shadow mx-auto mb-10 w-60 lg:w-auto"
@@ -30,7 +42,7 @@ export default function PovesteaNoastraPage() {
           skies, we've always found our best moments in the wild.
         </p>
       </div>
-      <div className="relative mx-auto mb-40 lg:mb-50">
+      <div className="relative mx-auto mb-40 lg:mb-70">
         <img
           src="/sparkle.png"
           alt="sparkle"
@@ -50,11 +62,14 @@ export default function PovesteaNoastraPage() {
         <br />
         <p>Onward and upward to the next adventure!</p>
       </div>
-      <Link href="/rsvp" className="block mx-auto">
-        <Button className="rounded-full w-full max-w-100 py-6 bg-background-3">
-          RSVP
+      <div className="flex items-center">
+        <Button
+          asChild
+          className="rounded-full w-full max-w-100 mx-auto py-6 bg-background-3"
+        >
+          <Link href="/rsvp">RSVP</Link>
         </Button>
-      </Link>
+      </div>
     </div>
   );
 }

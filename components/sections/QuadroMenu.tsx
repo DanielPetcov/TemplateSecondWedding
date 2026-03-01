@@ -1,3 +1,6 @@
+"use client";
+
+import useFadeIn from "@/hooks/useFadeIn";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -26,22 +29,29 @@ function QuadroMenuItem({
   url: string;
   bgImage: string;
 }) {
+  const { ref, isVisible } = useFadeIn({ threshold: 0.7 });
+
   return (
-    <Link
-      href={url}
-      className="relative aspect-square rounded-md overflow-hidden"
+    <div
+      ref={ref}
+      className={cn(
+        "relative aspect-square rounded-md overflow-hidden transition-opacity duration-1000 ease-in-out",
+        isVisible ? "opacity-100" : "opacity-0",
+      )}
     >
-      <div className="absolute z-1 inset-0 bg-black/10 hover:bg-gray-200/20 transition-all" />
-      <div className="absolute z-0 inset-0">
-        <img
-          src={bgImage}
-          alt="quadro image"
-          className="w-full h-full object-center object-cover"
-        />{" "}
-      </div>
-      <div className="relative z-10 flex items-center justify-center h-full">
-        <div className="text-white text-2xl uppercase underline">{title}</div>
-      </div>
-    </Link>
+      <Link href={url} className={cn(`h-full`)}>
+        <div className="absolute z-1 inset-0 bg-black/10 hover:bg-gray-200/20 transition-all" />
+        <div className="absolute z-0 inset-0">
+          <img
+            src={bgImage}
+            alt="quadro image"
+            className="w-full h-full object-center object-cover"
+          />{" "}
+        </div>
+        <div className="relative z-10 flex items-center justify-center h-full">
+          <div className="text-white text-2xl uppercase underline">{title}</div>
+        </div>
+      </Link>
+    </div>
   );
 }

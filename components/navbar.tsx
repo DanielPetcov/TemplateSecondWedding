@@ -41,7 +41,7 @@ export default function Navbar() {
     <>
       <div className="fixed top-0 left-0 w-full z-20 text-white">
         <div className="absolute inset-0 bg-background-3 z-0" />
-        <div className="relative flex items-center justify-between px-4 lg:px-10 py-3 lg:py-5 z-1">
+        <div className="relative flex items-center justify-between px-4 lg:px-10 py-3 z-1">
           <Link href="/" className="flex items-center">
             <Logo
               firstInitial="J"

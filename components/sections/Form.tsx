@@ -22,6 +22,7 @@ export default function Form() {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(FormContact),
@@ -34,10 +35,21 @@ export default function Form() {
     },
   });
 
-  const onSubmit: SubmitHandler<z.infer<typeof FormContact>> = (data) => {
+  const onSubmit: SubmitHandler<z.infer<typeof FormContact>> = async (data) => {
     try {
       setLoading(true);
-    } catch (error) {
+      const response = await fetch("/api/rspv", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast("Înscrierea dvs. a fost trimisă", {
+          position: "bottom-center",
+        });
+        reset();
+      }
+    } catch {
       toast.error("Ceva nu a mers!");
     } finally {
       setLoading(false);

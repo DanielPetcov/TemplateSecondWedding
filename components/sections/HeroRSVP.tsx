@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "../ui/button";
+import useFadeIn from "@/hooks/useFadeIn";
+import { cn } from "@/lib/utils";
 
 export default function HeroRSVP({
   bgImage,
@@ -10,8 +14,16 @@ export default function HeroRSVP({
   title: string;
   content: string;
 }) {
+  const { ref, isVisible } = useFadeIn({});
+
   return (
-    <div className="relative w-full max-h-screen overflow-hidden">
+    <div
+      ref={ref}
+      className={cn(
+        `relative w-full max-h-screen overflow-hidden transition-opacity duration-1000 ease-in-out`,
+        isVisible ? "opacity-100" : "opacity-0",
+      )}
+    >
       <img
         src={bgImage}
         alt="hero image"
