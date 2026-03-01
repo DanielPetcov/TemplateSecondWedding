@@ -1,65 +1,54 @@
-import Image from "next/image";
+import FirstPageTitle from "@/components/sections/FirstPageTitle";
+import Hero from "@/components/sections/Hero";
+import HeroJustDetails from "@/components/sections/HeroJustDetails";
+import HeroRSVP from "@/components/sections/HeroRSVP";
+import QuadroMenu from "@/components/sections/QuadroMenu";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div>
+      <FirstPageTitle firstName="Jenny" secondName="Jason" />
+      <div className="relative bg-white">
+        <HeroJustDetails
+          bgImage="/papadie.png"
+          details={[
+            "With love and gratitude, we invite you to share in the joy of our wedding day.",
+            "Saturday, September 20, 2025 The Golden Elm Manor, St. Augustine, New York",
+          ]}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        <div className="relative container mx-auto my-10 px-4">
+          <QuadroMenu
+            data={[
+              {
+                title: "Povestea noastră",
+                url: "/povestea-noastra",
+                bgImage: "/twohandsknuckle.png",
+              },
+              {
+                title: "Detalii",
+                url: "/detalii",
+                bgImage: "/pear.png",
+              },
+              {
+                title: "RSVP",
+                url: "/rsvp",
+                bgImage: "/houses-details.png",
+              },
+              {
+                title: "Registry",
+                url: "/rsvp",
+                bgImage: "/dead-flower.png",
+              },
+            ]}
+            className="max-w-4xl mx-auto 3xl:max-w-none"
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        <HeroRSVP
+          title="REGISTRY"
+          content="Your presence is the most cherished gift. Should you wish to contribute, we've created a honeymoon registry to help us embark on a memorable adventure to the Amalfi Coast."
+          bgImage="/flowers-rsvp.png"
+        />
+      </div>
     </div>
   );
 }
