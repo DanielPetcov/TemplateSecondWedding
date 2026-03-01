@@ -9,7 +9,7 @@ export default function QuadroMenu({
   className?: string;
 }) {
   return (
-    <div className={cn("grid grid-cols-2 gap-4", className)}>
+    <div className={cn("grid grid-cols-1 lg:grid-cols-2 gap-4", className)}>
       {data.map((d, index) => (
         <QuadroMenuItem {...d} key={index} />
       ))}
@@ -37,7 +37,7 @@ function QuadroMenuItem({
           src={bgImage}
           alt="quadro image"
           className="w-full h-full object-center object-cover"
-        />
+        />{" "}
       </div>
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-white text-2xl uppercase underline">{title}</div>

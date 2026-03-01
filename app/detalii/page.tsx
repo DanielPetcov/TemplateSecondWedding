@@ -9,13 +9,13 @@ export default function DetaliiPage() {
   return (
     <div>
       <Hero bgImage="/details-hero-image.png" title="The details" />
-      <div className="container mx-auto px-10">
-        <InvitationCard className="mt-20" />
+      <div className="container max-w-4xl 3xl:max-w-none mx-auto px-4">
+        <InvitationCard className="mt-10 lg:mt-20" />
         <ImageCard
           bgImage="/houses-details.png"
-          className="my-10 aspect-video"
+          className="my-10 aspect-square lg:aspect-video"
         />
-        <div className="grid grid-cols-2 gap-10 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10 mb-10">
           <AboutCard
             data={[
               {
@@ -53,7 +53,7 @@ export default function DetaliiPage() {
         </div>
       </div>
       <Hero bgImage="/travelstay.png" title="Travel & Stay" />
-      <div className="my-10 space-y-20 container px-4 mx-auto">
+      <div className="my-10 space-y-10 lg:space-y-20 container max-w-4xl mx-auto 3xl:max-w-none px-4 ">
         <TwoColumnTextImage
           text="Golden Elm Manor is a 90-minute train ride from Grand Central Station, with direct routes to St. Augustine. Complimentary shuttles will be available from the station to the T."
           image="/flowers.png"

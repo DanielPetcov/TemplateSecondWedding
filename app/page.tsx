@@ -1,5 +1,4 @@
 import FirstPageTitle from "@/components/sections/FirstPageTitle";
-import Hero from "@/components/sections/Hero";
 import HeroJustDetails from "@/components/sections/HeroJustDetails";
 import HeroRSVP from "@/components/sections/HeroRSVP";
 import QuadroMenu from "@/components/sections/QuadroMenu";
